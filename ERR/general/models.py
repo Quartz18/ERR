@@ -22,3 +22,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class Brand(models.Model):
+    name = models.CharField(max_length=30)
+    image = models.ImageField(upload_to="brand/images/%Y/%m/%d/")
+    meta_data = models.FileField(upload_to="brand/files/%Y/%m/%d/")
+    
+    def __Str__(self):
+        return self.name
