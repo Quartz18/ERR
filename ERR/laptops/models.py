@@ -44,7 +44,7 @@ class Laptop(models.Model):
     byte_type_for_harddisk = models.CharField(max_length=3, choices=byteCategory.choices, default="GB")
     hardisk = models.PositiveSmallIntegerField()
     #ram
-    byte_type_for_harddisk = models.CharField(max_length=3, choices=byteCategory.choices,default="GB")
+    byte_type_for_ram = models.CharField(max_length=3, choices=byteCategory.choices,default="GB")
     ram = models.PositiveSmallIntegerField()
     #graphics
     check_graphics_details = models.BooleanField(default=False)
