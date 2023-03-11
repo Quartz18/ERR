@@ -9,7 +9,6 @@ class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Product, on_delete=models.CASCADE)
     product = models.ForeignKey(Laptop, on_delete=models.CASCADE)
-
     def __str__(self):
         return "User: "+str(self.user)+", Product: "+str(self.product)
 

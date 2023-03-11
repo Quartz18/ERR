@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .models import Wishlist
+from .models import Wishlist, ReviewLaptop
 from laptops.models import Laptop
 from general.models import Product
+from .forms import ReviewLaptopForm
 # Create your views here.
 
 def viewWishList(request):
@@ -49,3 +50,18 @@ def deleteFromWishListLaptop(request):
             }
             return render(request,'account/wishlist.html',context)
     return HttpResponseRedirect(reverse('wishlistPage'))
+
+def viewReviewLaptop(request, laptop_id):
+    queryset = ReviewLaptop.objects.filter(product__id=laptop_id)
+    reviewForm = ReviewLaptopForm()
+    context = {
+        'laptop_id':laptop_id,
+        'reviewset':queryset,
+        'reviewForm': reviewForm
+    }
+    return render(request, 'account/temp_review.html', context)
+
+def addReviewLaptop(request,laptop_id):
+    if(request.method == "POST"):
+        print(request.POST.get("comment"))
+    return HttpResponseRedirect(reverse('viewReviewLaptop',kwargs={'laptop_id':laptop_id}))
