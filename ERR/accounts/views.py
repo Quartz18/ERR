@@ -62,6 +62,18 @@ def viewReviewLaptop(request, laptop_id):
     return render(request, 'account/temp_review.html', context)
 
 def addReviewLaptop(request,laptop_id):
-    if(request.method == "POST"):
-        print(request.POST.get("comment"))
+    product = Laptop.objects.get(id = laptop_id)
+    try:
+        already_set = ReviewLaptop.objects.get(user=request.user,product=product)
+    except(ReviewLaptop.DoesNotExist):
+        if(request.method == "POST"):
+            rate = request.POST.get("rate")
+            comment =request.POST.get("comment")
+            review = ReviewLaptop.objects.create(rate=rate,comment=comment,user=request.user,product=product)
     return HttpResponseRedirect(reverse('viewReviewLaptop',kwargs={'laptop_id':laptop_id}))
+
+def example(request):
+    print(request.user)
+    if(request.user.is_authenticated):
+        return render(request,'general/index.html',{})
+    return HttpResponseRedirect(reverse('viewReviewLaptop',kwargs={'laptop_id':2}))

@@ -7,4 +7,5 @@ urlpatterns = [
     path('wishlist/delete',views.deleteFromWishListLaptop, name="DeleteFromWishListLaptop"),
     path('reviews/<int:laptop_id>', views.viewReviewLaptop,name="viewReviewLaptop"),
     path('reviews/<int:laptop_id>/add', views.addReviewLaptop,name="addReviewLaptop"),
+    path('example', views.example,name="example"),
 ]
