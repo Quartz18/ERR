@@ -1,0 +1,451 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <!-- Basic need -->
+    <title>Recommendation System</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <link rel="profile" href="#">
+
+    <!--Google Font-->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+    <!-- Mobile specific meta -->
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone-no">
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <div style="background-color: #150210;">
+    <!--preloading-->
+    <div id="preloader">
+        <img class="logo" src="{% static 'images/logo11.png' %}" alt="" width="119" height="58">
+        <div id="status">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!--end of preloading-->
+    
+    <!--login form popup-->
+    <div class="login-wrapper" id="login-content">
+        <div class="login-content">
+            <a href="#" class="close">x</a>
+            <h3>Login</h3>
+            <form method="post" action="{% url 'login_user' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <label for="username">
+                    Username:
+                    <input type="text" name="username" id="username" placeholder="AbcXyz" required="required" />
+                </label>
+                </div>
+
+                <div class="row">
+                    <label for="password">
+                    Password:
+                    <input type="password" name="password" id="password" placeholder="Password" required="required" />
+                </label>
+                </div>
+                <div class="row">
+                    <div class="remember">
+                        <div>
+                            <input type="checkbox" name="remember" value="Remember me"><span>Remember me</span>
+                        </div>
+                        <a href="#">Forget password ?</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--end of login form popup-->
+
+    <!--signup form popup-->
+    <div class="login-wrapper" id="signup-content">
+        <div class="login-content">
+            <a href="#" class="close" id="register-here" name="register-here">x</a>
+            <h3>sign up</h3>
+            <form method="POST" action="{% url 'register_user' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <label for="username-2">
+                    Username:
+                    <input type="text" name="username" id="username-2" required="required" />
+                </label>
+                </div>
+
+                <div class="row">
+                    <label for="email-2">
+                    your email:
+                    <input type="email" name="email" id="email-2" placeholder="" required="required" />
+                </label>
+                </div>
+                <div class="row">
+                    <label for="password-2">
+                    Password:
+                    <input type="password" name="password" id="password-2" required="required" />
+                </label>
+                </div>
+                <div class="row">
+                    <label for="repassword-2">
+                    Confirm Password:
+                    <input type="password" name="confirm_password" id="repassword-2" placeholder="" required="required" />
+                </label>
+                </div>
+                <div class="row">
+                    <button type="submit">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--end of signup form popup-->
+    
+
+    <!-- BEGIN | Header -->
+    <header class="ht-header">
+        <div class="container">
+            <nav class="navbar navbar-default navbar-custom">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header logo">
+                    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <div id="nav-icon1">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <a href="{% url 'homePage' %}"><img class="logo" src="{% static 'images/project_logo_final_2.jpg' %}" alt="" width="119" height="58"></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav flex-child-menu menu-left">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'homePage' %}">Home</a>
+                        </li>
+                        <li class="dropdown first">
+                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+							brands<i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+                            <ul class="dropdown-menu level1">
+                                {% for brand in allBrands %}
+                                <li><a href="{% url 'brandList' brand.id %}">{{ brand.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="dropdown first">
+                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+                                Categories<i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu level1">
+                                {% for product in products %}
+                                <li><a href="/{{ product.name|lower }}">{{ product.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="dropdown first">
+                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+                                More Recommendations<i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu level1">
+                                <li><a href="#">For Programmers</a></li>
+                                <li><a href="#">For Children</a></li>
+                                <li><a href="#">Best phones to gift</a></li>
+                                <li><a href="#">Best laptops to gift</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown first">
+                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+                                {% if request.user.is_authenticated %}{{ request.user }}{% else %} Users {% endif %}
+                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu level1">
+                                <li><a href="{% url 'wishlistPage' %}">Wish List</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav flex-child-menu menu-right">
+                        {% if request.user.is_authenticated %}
+                        <li class="logoutLink"><a href="#" onclick="logging_out_confirm()">Logout</a></li>
+                        {% else %}
+                        <li class="loginLink"><a href="#">LOG In</a></li>
+                        <li class="btn signupLink "><a href="#">Sign Up</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+
+            <!-- top search form -->
+            <div class="top-search">
+                <select>
+				<option value="united">Product</option>
+				<option value="saab">Others</option>
+			</select>
+                <input type="text" placeholder="Search for a laptop, mobile & accessories that you are looking for">
+            </div>
+        </div>
+    </header>
+    <!-- END | Header -->
+
+    {% block content %}
+    <div class="slider movie-items">
+        <div class="container">
+            <div class="row">
+                <div class="slick-multiItemSlider">
+                    {% for laptop in instances1 %}
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <a href="#"><img src="{{ laptop.image.url }}" alt="" width="285" height="437"></a>
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="blue"><a href="#">{{ laptop.brand }}</a></span>
+                            </div>
+                            <h6>
+                                <a href="laptop/{{ laptop.id }}">{{ laptop.name }}</a>
+                            </h6>
+                            <p><i class="ion-android-star"></i><span>{{ laptop.ratings }}</span> /5</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <a href="#"><img src="{{ instances2.0.image.url }}" alt="" width="285" height="437"></a>
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="blue"><a href="#">{{ instances2.0.brand }}</a></span>
+                            </div>
+                            <h6>
+                                <a href="laptop/{{ instances2.0.id }}">{{ instances2.0.name }}</a>
+                            </h6>
+                            <p><i class="ion-android-star"></i><span>{{ instances2.0.ratings }}</span> /5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="movie-items">
+        <div class="container">
+            <div class="row ipad-width">
+                <div class="col-md-8">
+                    <div class="title-hd">
+                        <h2>Laptop</h2>
+                        <a href="laptop/" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+                    </div>
+                    <div class="tabs">
+                        <ul class="tab-links">
+                            <li class="active"><a href="#tab1">#Everyday</a></li>
+                            <li><a href="#tab2"> #Gaming</a></li>
+                            <li><a href="#tab3"> #Business  </a></li>
+                            <li><a href="#tab4"> #Performance</a></li>
+                        </ul>
+                        <br>
+                        <div class="tab-content">
+                            <div id="tab1" class="tab active">
+                                <div class="row">
+                                    <div class="slick-multiItem">
+                                        {% for laptop in Everydaylaptops %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ laptop.image.url }}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="laptop/{{ laptop.id }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="laptop/{{ laptop.id }}">{{ laptop.brand }}</a>
+                                                    </h6>
+                                                    <p><i class="ion-android-star"></i><span>{{laptop.ratings }}</span> /5</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab2" class="tab">
+                                <div class="row">
+                                    <div class="slick-multiItem">
+                                        {% for laptop in Gaminglaptops %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ laptop.image.url }}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="laptop/{{ laptop.id }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="laptop/{{ laptop.id }}">{{ laptop.brand }}</a>
+                                                    </h6>
+                                                    <p><i class="ion-android-star"></i><span>{{laptop.ratings }}</span> /5</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab3" class="tab">
+                                <div class="row">
+                                    <div class="slick-multiItem">
+                                        {% for laptop in Businesslaptops %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ laptop.image.url }}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="laptop/{{ laptop.id }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="laptop/{{ laptop.id }}">{{ laptop.brand }}</a>
+                                                    </h6>
+                                                    <p><i class="ion-android-star"></i><span>{{laptop.ratings }}</span> /5</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab4" class="tab">
+                                <div class="row">
+                                    <div class="slick-multiItem">
+                                        {% for laptop in Performancelaptops %}
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ laptop.image.url }}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a href="laptop/{{ laptop.id }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6>
+                                                        <a href="laptop/{{ laptop.id }}">{{ laptop.brand }}</a>
+                                                    </h6>
+                                                    <p><i class="ion-android-star"></i><span>{{laptop.ratings }}</span> /5</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="title-hd">
+                        <h2>Mobiles</h2>
+                        <a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+                    </div> -->
+                    <div class="tabs">
+                        
+                        <div class="tab-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="sidebar ">
+                        <div class="celebrities ">
+                            <h4 class="sb-title ">Popular Searches</h4>
+                            {% for brand in brands %}
+                            <div class="celeb-item ">
+                                <a href="{% url 'brandList' brand.id %}"><img src="{{ brand.image.url }}" alt=" " width="70 " height="70 "></a>
+                                <div class="celeb-author ">
+                                    <h6>
+                                        <a href="{% url 'brandList' brand.id %}">{{ brand.name }}</a>
+                                    </h6>
+                                    <span>{{ brand.type}}</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    <!-- footer section-->
+    <footer class="ht-footer ">
+        <div class="container ">
+            <div class="flex-parent-ft ">
+                <div class="flex-child-ft item2 ">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="# ">About</a></li>
+                        <li><a href="# ">Contact Us</a></li>
+                        <li><a href="# ">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="flex-child-ft item3 ">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="# ">Terms of Use</a></li>
+                        <li><a href="# ">Privacy Policy</a></li>
+                        <li><a href="# ">Security</a></li>
+                    </ul>
+                </div>
+                <div class="flex-child-ft item4 ">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="# ">My Account</a></li>
+                        <li><a href="# ">Watchlist</a></li>
+                        <li><a href="# ">Collections</a></li>
+                        <li><a href="# ">User Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="ft-copyright ">
+            <div class="ft-left ">
+                <p>
+                    <a target="_blank " href="# ">MCA</a>
+                </p>
+            </div>
+            <div class="backtotop ">
+                <p><a href="# " id="back-to-top ">Back to top  <i class="ion-ios-arrow-thin-up "></i></a></p>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer section-->
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/plugins2.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script>
+        function logging_out_confirm(){
+                
+            var r = confirm("Are you sure you want to logout?");
+            if (r == true){
+                window.location.replace("{% url 'logout_user' %}");
+            }
+        }
+    </script>
+</div>
+</body>
+
+
+</html>

@@ -1,0 +1,64 @@
+GENERAL
+Country of Origin	China
+Series	RedmiBook
+Model	RedmiBook Pro 15
+Utility	Everyday Use
+Device Type	Netbook
+OS	Windows 11 Home (64-bit)
+Dimensions	363.8 x 243.5 x 19.9 mm
+Weight	1.8 kg
+Warranty	1 year Onsite Warranty
+DISPLAY
+Type	LED
+Touch	No
+Size	15.6 inches
+Resolution	1920 x 1080 pixels
+PPI	~ 242
+Refresh Rate	90 Hz
+Aspect Ratio	16:10
+Anti Glare Screen	Yes
+Features	81.8% Screen to Body ratio and DC Dimming
+CONNECTIVITY
+Ethernet	Yes
+WiFi	Wi-Fi 5 802.11ac (2x2)
+Bluetooth	v5.1
+USB Ports	3 x USB Type-A, 2 x USB 3.0, 1 x USB 2.0
+USB Port Details	2 X USB 3.2 Gen1 Type-A, 1 x USB 2.0 Type-A
+HDMI	1 x HDMI v1.4 Port
+Card Reader	SD Card Reader
+Microphone In	Yes
+Headphone Jack	Yes
+Security Lock Port	Kensington Lock
+INPUT
+Camera	HD Camera
+Keyboard	Chiclet keyboard with Scissor Mechanism, 1.5mm Key Travel
+Touchpad	Multi-touch with support for Windows Precision drivers
+Inbuilt Microphone	In-built Microphone
+Speakers	2 x 2W Stereo speaker
+Sound	DTS Audio Processing
+Optical Drive	No
+PROCESSOR
+Processor	11th Gen Intel Core i5 11300H
+Speed	4 x 3.1 GHz (Turbo Speed upto 4.4 GHz) Cores
+Cores	Quad Core, 8 Threads
+Cache	8 MB
+Brand	Intel
+Series	Core i5
+Model	11300H
+Generation	11th Gen
+GRAPHICS
+GPU	Intel Iris Xe Graphics
+Brand	Intel
+MEMORY
+RAM	8 GB DDR4
+RAM Bus Speed	3200 MHz
+Solid State Drive	512 GB
+SSD Interface	NVMe
+BATTERY
+Adapter Type	65W Power Adapter
+Battery Backup	Upto 10 hours
+Battery Details	46WHr
+EXTRA
+Included Software	MS Office
+Sales Package	Laptop, Adaptor, Power Cord, User Manual
+Other Features	Realtek ALC256, TPM 2.0 Security Chip

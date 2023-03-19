@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Reviews
+        </title>
+    </head>
+    <body>
+        <div>
+            <h3>Reviews</h3><br>
+            <form action="{% url 'addReviewLaptop' laptop_id %}" method="post">
+                {% csrf_token %}
+                {{ reviewForm.rate.label_tag }}<br>
+                {{ reviewForm.rate }}<br>
+                {{ reviewForm.comment.label_tag }}<br>
+                {{ reviewForm.comment }}
+                <input type="submit" value="POST"><br>
+            </form>
+            {% if reviewset %}
+            <br><br>
+            {% for review in reviewset %}
+            Rate: {{ review.rate }} stars<br>
+            Comment: {{ review.comment }}<br>
+            {% endfor %}
+            {% else %}
+            No reviews yet!<br>
+            {% endif %}
+        </div>
+    </body>
+</html>
