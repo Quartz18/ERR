@@ -1,0 +1,67 @@
+GENERAL
+Country of Origin	China
+Series	Vivobook 16X
+Model	M1603QA-MB502WS/M1603QA-MB501WS
+Utility	Gaming
+Device Type	Netbook
+OS	Windows 11 Home (64-bit)
+Dimensions	358 x 247.7 x 20 mm
+Weight	1.8 kg
+Warranty	1 year Onsite Warranty
+DISPLAY
+Type	LED
+Touch	No
+Size	16 inches
+Resolution	1920 x 1200 pixels
+PPI	~ 283
+Refresh Rate	60 Hz
+Aspect Ratio	16:10
+Anti Glare Screen	Yes
+Features	300nit Brightness, NTSC: 45%, 86% Screen-to-body ratio
+CONNECTIVITY
+Ethernet	No
+WiFi	Wi-Fi 6 (802.11ax) (Dual band) 2*2
+Bluetooth	v5
+USB Ports	1 x USB Type-C, 2 x USB Type-A, 2 x USB 3.0, 1 x USB 2.0
+USB Port Details	1 x USB 2.0 Type-A, 1 x USB 3.2 Gen 1 Type-C, 2x USB 3.2 Gen 1 Type-A
+HDMI	1 x HDMI v1.4 Port
+Fingerprint Sensor	Yes
+Microphone In	Yes
+Headphone Jack	Yes
+Other Ports	1 x DC-in
+INPUT
+Camera	720p HD Camera With Privacy Shutter
+Keyboard	Backlit Chiclet Keyboard with Num-key, 1.4mm Key-travel
+Keyboard Backlit	Yes
+Touchpad	Yes
+Inbuilt Microphone	Yes
+Speakers	Built-in Speaker
+Sound	harman/kardon (Mainstream)
+Optical Drive	No
+PROCESSOR
+Processor	5th Gen AMD Ryzen 5 5600H
+Speed	6 x 3.3 GHz (Turbo Speed upto 4.2 GHz) Cores
+Cores	Hexa Core, 12 Threads
+Cache	16 MB
+Brand	AMD
+Series	Ryzen 5
+Model	5600H
+Generation	5th Gen
+GRAPHICS
+GPU	AMD Radeon Vega 7
+Brand	AMD
+MEMORY
+RAM	8 GB DDR4
+RAM Bus Speed	3200 MHz
+Maximum RAM Supported	Upto 16 GB
+RAM Slots	1
+Solid State Drive	512 GB
+SSD Interface	NVMe PCIe Gen3
+BATTERY
+Battery	3 Cell Battery
+Adapter Type	90W AC Adapter
+Battery Backup	Upto 8 hours
+Battery Details	50WHrs, 3S1P
+EXTRA
+Included Software	MyASUS, Office Home and Student 2021 included
+Sales Package	Laptop, Battery, Power Adaptor, User Guide, Warranty Documents
