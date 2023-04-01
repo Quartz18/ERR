@@ -1,0 +1,2 @@
+Brands = ['Lenovo', 'Hp','Asus','Dell','Acer','MSI','Apple','Samsung','Toshiba']
+Utility = ['Gaming','Everyday Use','Business','Performance','Programmer']

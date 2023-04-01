@@ -1,0 +1,115 @@
+{% extends "general/index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<!-- userfavoritelist13:49-->
+<head>
+	<!-- Basic need -->
+	<title>{{ request.user }} Profile</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<link rel="profile" href="#">
+
+    <!--Google Font-->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+	<!-- Mobile specific meta -->
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone-no">
+
+	<!-- CSS files -->
+	<link rel="stylesheet" href="css/plugins.css">
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+{% block content%}
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>{{ user.username }} Profile</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="{% url 'homePage' %}">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Favorite movies</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single userfav_list">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="user-information">
+					<div class="user-fav">
+						<p>Account Details</p>
+						<ul>
+							<li class="active"><a href="userfavoritelist.html">Gadgets in list</a></li>
+							<li><a href="userrate.html">Rated Gadgets</a></li>
+						</ul>
+					</div>
+					<div class="user-fav">
+						<p>Details</p>
+						<ul>
+							<li><a href="#">Email Id: {{ user.email }}</a></li>
+							<li><a href="#">Log out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="topbar-filter user">
+					<p>Found <span>{{ counter_wishlist }} laptops</span> in total</p>
+					<label>Sort by:</label>
+					<select>
+						<option value="range">-- Choose option --</option>
+						<option value="saab">-- Choose option 2--</option>
+					</select>
+					<a href="userfavoritelist.html" class="list"><i class="ion-ios-list-outline active"></i></a>
+					<a  href="userfavoritegrid.html" class="grid"><i class="ion-grid "></i></a>
+				</div>
+				<div class="flex-wrap-movielist user-fav-list">
+					{% for fav_laptop in wishlist %}
+					<div class="movie-item-style-2">
+						<img src="{{ fav_laptop.product.image.url }}" alt="">
+						<div class="mv-item-infor">
+							<h6><a href="{% url 'laptop_details' fav_laptop.product.id %}">{{ fav_laptop.product.name }} Laptop</a></h6>
+							<p class="rate"><i class="ion-android-star"></i><span>{{ fav_laptop.product.ratings }}</span> /5</p>
+							<p class="describe">{{ fav_laptop.product.name }} ({{fav_laptop.product.cpubrand }} {{ fav_laptop.product.cpumodel }}/ {{ fav_laptop.product.ram }}GB/{% if fav_laptop.product.check_ssd %} {{ fav_laptop.product.ssd }}{% endif %}GB/ {{ fav_laptop.product.os }}) price in India starts from ₹{{ fav_laptop.product.price }}.
+							</p>
+							<p class="run-time"> Price: ₹{{ fav_laptop.product.price }}    <span>Available: {% if fav_laptop.product.availability %} Yes {% else %} No {% endif %}</span>    <span>type: {{ fav_laptop.product.type }}</span></p>
+							<p>Brand: <a href="{% url 'brandList' fav_laptop.product.brand.id  %}">{{ fav_laptop.product.brand }}</a></p>
+						</div>
+						<div class="col-md-4 col-xs-12 col-sm-12">
+							<div class="sb-it">
+								<form action="{% url 'DeleteFromWishListLaptop' %}" method="POST">
+                                    {% csrf_token %}
+									<input type="hidden" value="{{fav_laptop.product.id }}" name="laptop_id" id="laptop_id">
+                                    <input type="submit" value="Delete From Wish List" class="redbtn">
+                                </form>
+							</div>
+						</div>
+					</div>
+					{% empty %}
+					<p> No Gadgets in the wishlist! </p>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+<script src="js/jquery.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/plugins2.js"></script>
+<script src="js/custom.js"></script>
+</body>
+
+<!-- userfavoritelist14:04-->
+</html>

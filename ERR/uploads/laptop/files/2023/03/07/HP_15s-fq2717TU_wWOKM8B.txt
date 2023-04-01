@@ -1,0 +1,60 @@
+GENERAL
+Series	Laptop
+Model	15s-fq2717TU
+Utility	Performance
+Device Type	Ultrabook
+OS	Windows 11 Home (64-bit)
+Dimensions	358 x 242 x 17.9 mm
+Weight	1.69 kg
+Warranty	1 year Onsite Warranty
+DISPLAY
+Type	LED
+Touch	No
+Size	15.6 inches
+Resolution	1920 x 1080 pixels
+PPI	~ 141
+Anti Glare Screen	Yes
+Features	250 nits, 141 ppi, Color Gamut: 45%NTSC
+CONNECTIVITY
+Ethernet	No
+WiFi	Realtek RTL8822CE 802.11a/b/g/n/ac (2x2)
+Bluetooth	v5
+USB Ports	1 x USB Type-C, 2 x USB 3.0
+Display Port	No
+HDMI	1 x HDMI 1.4b Port
+Microphone In	Yes
+Headphone Jack	Yes
+INPUT
+Camera	Yes
+Keyboard	Full-size, backlit natural silver keyboard with numeric keypad
+Keyboard Backlit	Yes
+Touchpad	Yes
+Inbuilt Microphone	Yes
+Speakers	Built-in Speakers
+Optical Drive	No
+PROCESSOR
+Processor	11th Gen Intel Core i3 1115G4
+Speed	2 x 3 GHz (Turbo Speed upto 4.1 GHz) Cores
+Cores	Dual Core, 4 Threads
+Cache	6 MB
+Brand	Intel
+Series	Core i3
+Model	1115G4
+Generation	11th Gen
+Process Node	10 nm SuperFin
+GRAPHICS
+GPU	Intel Integrated UHD
+Brand	Intel
+MEMORY
+RAM	8 GB DDR4
+RAM Bus Speed	3200 MHz
+Solid State Drive	512 GB
+SSD Interface	NVMe
+Hard Disk Interface	SATA
+BATTERY
+Battery	3 Cell Battery
+Adapter Type	41 W Smart AC power adapter
+Battery Details	41 Wh Li-ion
+EXTRA
+Sales Package	Laptop, battery, adapter, cables and user manuals
+Other Features	Multi touch gestures enabled

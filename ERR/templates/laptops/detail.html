@@ -1,0 +1,437 @@
+{% extends "general/index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<!-- moviesingle07:38-->
+
+<head>
+    <!-- Basic need -->
+    <title>Recommendation System
+    </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <link rel="profile" href="#">
+
+    <!--Google Font-->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+    <!-- Mobile specific meta -->
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone-no">
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    {% block content %}
+    <div class="hero mv-single-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- <h1> movie listing - list</h1>
+				<ul class="breadcumb">
+					<li class="active"><a href="#">Home</a></li>
+					<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+				</ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-single movie-single movie_single">
+        <div class="container">
+            <div class="row ipad-width2">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="movie-img sticky-sb">
+                        <img src="{{ queryset.image.url }}" alt="">
+                        <div class="movie-btn">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="movie-single-ct main-content">
+                        <h1 class="bd-hd">{{ queryset.name }} Laptop</h1>
+                        <div class="social-btn">
+                            <a href="" class="parent-btn">
+                                <form method="POST" action="{% url 'AddToWishListLaptop' %}">
+                                    {% csrf_token %}
+                                    <button class="parent-btn" value={{ queryset.id }} id="laptop_id" name="laptop_id" style="background-color: transparent;outline:none;border: none;">
+                                <i class="ion-heart"></i> Add to Favorite</a>
+                            </button>
+                            </form>
+                            <a href="#" class="parent-btn"><i class="ion-android-add"></i> Compare</a>
+                            <div class="hover-bnt">
+                                <a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>share</a>
+                                <div class="hvr-item">
+                                    <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
+                                    <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie-rate">
+                            <div class="rate">
+                                <i class="ion-android-star"></i>
+                                <p><span>{{ queryset.ratings }}</span> /5<br>
+                                    <span class="rv">{{ queryset.count_ratings }} Reviews</span>
+                                </p>
+                            </div>
+                            <div class="rate-star">
+                                <p>Rate This Product: </p>
+                                <i class="ion-ios-star{% if queryset.ratings > 0 %}{% else %}-outline{% endif%}"></i>
+                                <i class="ion-ios-star{% if queryset.ratings > 1 %}{% else %}-outline{% endif%}"></i>
+                                <i class="ion-ios-star{% if queryset.ratings > 2 %}{% else %}-outline{% endif%}"></i>
+                                <i class="ion-ios-star{% if queryset.ratings > 3 %}{% else %}-outline{% endif%}"></i>
+                                <i class="ion-ios-star{% if queryset.ratings > 4 %}{% else %}-outline{% endif%}"></i>
+                            </div>
+                        </div>
+                        <div class="movie-tabs">
+                            <div class="tabs">
+                                <ul class="tab-links tabs-mv">
+                                    <li class="active"><a href="#overview">Overview</a></li>
+                                    <li><a href="#reviews"> Reviews</a></li>
+                                    <li><a href="#moviesrelated"> Related Proucts</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="overview" class="tab active">
+                                        <div class="row">
+                                            <div class="col-md-8 col-sm-12 col-xs-12">
+                                                <!-- Here meta information -->
+                                                <p class="describe">{{ queryset.name }} ({{ queryset.cpubrand }} {{ queryset.cpumodel }}/ {{ queryset.product.ram }}GB/{% if queryset.check_ssd %} {{ queryset.ssd }}{% endif %}GB/ {{ queryset.os }}) price in India starts from ₹{{ queryset.price }}.
+                                                </p>
+                                                <div class="title-hd-sm">
+                                                    <h4>General</h4>
+                                                </div>
+                                                <div class="mvcast-item">
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Name </a>
+                                                        </div>
+                                                        <p>{{ queryset.name }} Laptop</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Type </a>
+                                                        </div>
+                                                        <p>{{ queryset.type }}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">OS </a>
+                                                        </div>
+                                                        <p>{{queryset.os}}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Brand </a>
+                                                        </div>
+                                                        <p>{{queryset.brand}}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Weight </a>
+                                                        </div>
+                                                        <p>{{queryset.weight}}kg</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Warranty </a>
+                                                        </div>
+                                                        <p>{{queryset.warranty}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="title-hd-sm">
+                                                    <h4>Display</h4>
+                                                </div>
+                                                <!-- movie cast -->
+                                                <div class="mvcast-item">
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Screen </a>
+                                                        </div>
+                                                        <p>{{queryset.Screen}} inches</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Screen Resolution</a>
+                                                        </div>
+                                                        <p>{{queryset.screenResolution}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="title-hd-sm">
+                                                    <h4>CPU Details</h4>
+                                                </div>
+                                                <div class="mvcast-item">
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Brand </a>
+                                                        </div>
+                                                        <p>{{queryset.cpubrand}} inches</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Model</a>
+                                                        </div>
+                                                        <p>{{queryset.cpumodel}}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Core</a>
+                                                        </div>
+                                                        <p>{{queryset.cpucores}}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Generation</a>
+                                                        </div>
+                                                        <p>{{queryset.cpugeneration }}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Clock speed</a>
+                                                        </div>
+                                                        <p>{{queryset.cpuspeed}} GHz</p>
+                                                    </div>
+                                                </div>
+                                                <div class="title-hd-sm">
+                                                    <h4>Memory Storage</h4>
+                                                </div>
+                                                <div class="mvcast-item">
+                                                    {% if queryset.check_harddisk %}
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Hardisk </a>
+                                                        </div>
+                                                        <p>{{ queryset.hardisk}}{{queryset.byte_type_for_harddisk}}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Hardisk RPM</a>
+                                                        </div>
+                                                        <p>{{ queryset.harddiskrpm}}GHz</p>
+                                                    </div>
+                                                    {% endif %}
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">RAM</a>
+                                                        </div>
+                                                        <p>{{queryset.ram}}GB</p>
+                                                    </div>
+                                                    {% if queryset.check_ssd %}
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">SSD </a>
+                                                        </div>
+                                                        <p>{{ queryset.ssd}}{{queryset.byte_type_for_ssd}}</p>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="title-hd-sm">
+                                                    <h4>Other Features</h4>
+                                                </div>
+                                                <div class="mvcast-item">
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Backlit Keyboard </a>
+                                                        </div>
+                                                        <p>{% if queryset.backlit_keyboard %}Yes{% else %}No{% endif %}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">HDMI</a>
+                                                        </div>
+                                                        <p>{% if queryset.hdmi %}Yes{% else %}No{% endif %}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Optical Drive</a>
+                                                        </div>
+                                                        <p>{% if queryset.optical_drive %}Yes{% else %}No{% endif %}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">USB Ports</a>
+                                                        </div>
+                                                        <p>{% if queryset.usb_3 %}{{queryset.count_usb_3}} X USB 3.0{% else %}No{% endif %}</p>
+                                                        <p>{% if queryset.usb_type_c %}{{queryset.count_usb_type_c}} X USB Type-C{% else %}No{% endif %}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Fingerprints </a>
+                                                        </div>
+                                                        <p>{% if queryset.fingerprints %}Yes{% else %}No{% endif %}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Anti-Glare </a>
+                                                        </div>
+                                                        <p>{% if queryset.anti_glare %}Yes{% else %}No{% endif %}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Face Recognition </a>
+                                                        </div>
+                                                        <p>{% if queryset.face_recognition %}Yes{% else %}No{% endif %}</p>
+                                                    </div>
+                                                    <div class="cast-it">
+                                                        <div class="cast-left">
+                                                            <a href="#">Touch Screen </a>
+                                                        </div>
+                                                        <p>{% if queryset.touch_screen %}Yes{% else %}No{% endif %}</p>
+                                                    </div>
+                                                </div>
+                                                <!-- laptop user review -->
+                                                <!-- <div class="mv-user-review-item">
+                                                    <h3>Best Marvel movie in my opinion</h3>
+                                                    <div class="no-star">
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star last"></i>
+                                                        <i class="ion-android-star last"></i>
+                                                    </div>
+                                                    <p class="time">
+                                                        9 March 2023 by <a href="#"> abc person</a>
+                                                    </p>
+                                                    <p>Good product</p>
+                                                </div> -->
+                                            </div>
+                                            <div class="col-md-4 col-xs-12 col-sm-12">
+                                                <div class="sb-it">
+                                                    <h6>Price: </h6>
+                                                    <p>
+                                                        <a href="#">₹{{ queryset.price }} </a>
+                                                    </p>
+                                                </div>
+                                                <div class="sb-it">
+                                                    <h6>Everyday: </h6>
+                                                    <p>{% if queryset.everyday_type %}Yes{% else %}No{% endif %}</p>
+                                                </div>
+                                                <div class="sb-it">
+                                                    <h6>Gaming: </h6>
+                                                    <p>{% if queryset.gaming_type %}Yes{% else %}No{% endif %}</p>
+                                                </div>
+                                                <div class="sb-it">
+                                                    <h6>Business:</h6>
+                                                    <p>{% if queryset.business_type %}Yes{% else %}No{% endif %}</p>
+                                                </div>
+                                                <div class="sb-it">
+                                                    <h6>Performance:</h6>
+                                                    <p>{% if queryset.performance %}Yes{% else %}No{% endif %}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="reviews" class="tab review">
+                                        <div class="row">
+                                            <div class="topbar-filter">
+                                                <p>Found <span>{{ queryset.count_ratings }} reviews</span> in total</p>
+                                            </div>
+                                            {% if reviewForm %}
+                                                <div class="mv-user-review-item">
+                                                    <form action="{% url 'addReviewLaptop' laptop_id %}" method="POST">
+                                                        {% csrf_token %}
+                                                        <h3>Rate</h3>
+                                                        <div class="no-star">
+                                                            <select name="rate" id="rate">
+                                                                <option value="0" selected>0</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
+                                                        </div>
+                                                        {{ reviewForm.comment.label_tag }}<br>
+                                                        {{ reviewForm.comment }}<br>
+                                                        <input type="submit" value="Post" class="redbtn"><br>
+                                                    </form>
+                                                </div>
+                                            {% endif %}
+                                            {% for review in reviewset %}
+                                            <div class="mv-user-review-item">
+                                                <div class="user-infor">
+                                                    <div>
+                                                        <h3>{{ review.comment }}</h3>
+                                                        <div class="no-star">
+                                                            <i class="ion-android-star{% if review.rate > 0 %}{% else %} last{% endif%}"></i>
+                                                            <i class="ion-ios-star{% if review.rate > 1 %}{% else %} last{% endif%}"></i>
+                                                            <i class="ion-ios-star{% if review.rate > 2 %}{% else %} last{% endif%}"></i>
+                                                            <i class="ion-ios-star{% if review.rate > 3 %}{% else %} last{% endif%}"></i>
+                                                            <i class="ion-ios-star{% if review.rate > 4 %}{% else %} last{% endif%}"></i>
+                                                        </div>
+                                                        <p class="time">
+                                                            {{ review.date_field }} by <a href="#"> {{ review.user}}</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% empty %}
+                                            <div class="mv-user-review-item">
+                                                <div class="user-infor">
+                                                    <h3>No reviews yet!<br>
+                                                    Be the first one to post.</h3>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div id="moviesrelated" class="tab">
+                                        <div class="row">
+                                            <h3>Related Laptop To</h3>
+                                            <h2>Samsung</h2>
+                                            <div class="topbar-filter">
+                                                <p>Found <span>4 laptop </span> in total</p>
+                                                <label>Sort by:</label>
+                                                <select>
+									
+												<option value="rating">Rating Descending</option>
+												<option value="rating">Rating Ascending</option>
+											
+											</select>
+                                            </div>
+                                            <div class="movie-item-style-2">
+                                                <img src="images/uploads/mv1.jpg" alt="">
+                                                <div class="mv-item-infor">
+                                                    <h6><a href="#">Samsung<span>(2022)</span></a></h6>
+                                                    <p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
+                                                    <p class="describe">RAM.</p>
+                                                    <p class="run-time"> . <span></span> .</p>
+                                                    <p>Brand:
+                                                        <a href="#">Samsung</a>
+                                                    </p>
+                                                    <p>Graphics:
+                                                        <a href="#"></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/plugins2.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script>
+        const rate = (rating) => {
+            let l = 0;
+            };
+    </script>
+</body>
+
+<!-- moviesingle11:03-->
+
+</html>
