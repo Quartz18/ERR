@@ -80,7 +80,7 @@ class Laptop(models.Model):
         choice2="Chrome", gettext_lazy("Chrome")
         choice3="DOS", gettext_lazy("DOS")
         choice4="Linux", gettext_lazy("Linux")
-        choice5="Mac", gettext_lazy("Mac")
+        choice5="Mac OS", gettext_lazy("Mac OS")
         choice6="Ubuntu", gettext_lazy("Ubuntu")
         choice7="Windows 10", gettext_lazy("Windows 10")
         choice8="Windows 11", gettext_lazy("Windows 11")
