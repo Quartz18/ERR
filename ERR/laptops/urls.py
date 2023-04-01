@@ -7,14 +7,20 @@ router.register('laptop',views.LaptopList)
 
 urlpatterns = [
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ERR/master
     # path('',include(router.urls)),
     path('',views.laptopList,name="laptopList"),
     path('<int:laptop_id>', views.lapTopDetails,name="laptop_details"),
     path('filters',views.laptopFilter, name="laptop_filters"),
     path('orderDesc',views.orderDescendingLaptop,name="orderDescendingLaptop"),
+<<<<<<< HEAD
 =======
     path('',include(router.urls)),
     path('test/<int:laptop_id>', views.lapTopDetails),
+>>>>>>> ERR/master
+=======
 >>>>>>> ERR/master
     path('brands/<str:brand_id>',views.filterByBrand),
     path('availability/<int:availability_id>',views.filterByAvailability),
@@ -23,13 +29,19 @@ urlpatterns = [
     path('utility/gaming/<int:check_gaming>',views.filterByGaming),
     path('utility/businesss/<int:check_business>',views.filterByBusiness),
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ERR/master
     path('utility/performance/<int:check_performance>', views.filterByPerformance),
     path('testing', views.testing,name="laptop_testing"),
     path('programmers',views.forProgrammers,name="forProgrammers"),
     path('students',views.forStudents,name="forStudents"),
     path('basicUser',views.forBasicUser,name="forBasicUser"),
+<<<<<<< HEAD
 =======
     path('utility/performance/<int:check_performance>', views.filterByPerformance)
+>>>>>>> ERR/master
+=======
 >>>>>>> ERR/master
 ]
 

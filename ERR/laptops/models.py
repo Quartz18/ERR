@@ -81,9 +81,13 @@ class Laptop(models.Model):
         choice3="DOS", gettext_lazy("DOS")
         choice4="Linux", gettext_lazy("Linux")
 <<<<<<< HEAD
+<<<<<<< HEAD
         choice5="Mac OS", gettext_lazy("Mac OS")
 =======
         choice5="Mac", gettext_lazy("Mac")
+>>>>>>> ERR/master
+=======
+        choice5="Mac OS", gettext_lazy("Mac OS")
 >>>>>>> ERR/master
         choice6="Ubuntu", gettext_lazy("Ubuntu")
         choice7="Windows 10", gettext_lazy("Windows 10")
