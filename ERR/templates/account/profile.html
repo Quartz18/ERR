@@ -1,0 +1,54 @@
+{% extends "general/index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Wish List
+        </title>
+    </head>
+    <body>
+        {% block content %}
+        <div class="hero mv-single-hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- <h1> movie listing - list</h1>
+                    <ul class="breadcumb">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+                    </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-single movie-single movie_single">
+            <div class="container">
+                <div class="row ipad-width2">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="movie-img sticky-sb">
+                            <h4>Wish List of User {{ user }}</h4>
+                            {% if wishlist %}
+                            {% for item in wishlist %}
+                            {{ item.product }}<br>
+                            {% endfor %}
+                            {% else %}
+                            No Items in Wish List
+                            {% endif %}
+
+                            <div>
+                                <h4>Delete Laptop From WishList</h4>
+                                <form action="{% url 'DeleteFromWishListLaptop' %}" method="POST">
+                                    {% csrf_token %}
+                                    Laptop ID : <input type="number" name="laptop_id" id="laptop_id">
+                                    <input type="submit" value="Delete From Wish List">
+                                </form>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+        </div>     
+        {% endblock %}
+    </body>
+</html>

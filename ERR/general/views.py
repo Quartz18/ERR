@@ -41,7 +41,6 @@ def generalList(request):
         }
     return render(request, 'general/index.html',context)
 
-
 def brandList(request, brand_id):
     orderLaptop = 0
     laptoplist = Laptop.objects.filter(brand = brand_id)
