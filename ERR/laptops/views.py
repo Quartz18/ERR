@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound, Http404
 from django.urls import reverse
@@ -5,6 +6,11 @@ from general.models import Brand, Product
 from .models import Laptop
 from accounts.models import ReviewLaptop
 from accounts.forms import ReviewLaptopForm
+=======
+from django.shortcuts import render
+from general.models import Brand, Product
+from .models import Laptop
+>>>>>>> ERR/master
 from .serializers import LaptopSerializer
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
@@ -15,6 +21,7 @@ class LaptopList(viewsets.ReadOnlyModelViewSet):
     queryset = Laptop.objects.all()
     serializer_class = LaptopSerializer
 
+<<<<<<< HEAD
 def laptopList(request):
     orderLaptop = 0
     laptops = Laptop.objects.all()
@@ -54,6 +61,8 @@ def laptopList(request):
         context['laptopsList'] = laptoplist
     return render(request, 'laptops/laptopList.html',context)
 
+=======
+>>>>>>> ERR/master
 def filterByBrand(request,brand_id):
     brand_name = Brand.objects.get(name=brand_id)
     queryset = Laptop.objects.filter(brand=brand_name)
@@ -101,6 +110,7 @@ def filterByPerformance(request, check_performance):
 #def filterByBackupBattery():
 #def filterByWarranty()
 
+<<<<<<< HEAD
 def laptopFilter(request):
    if request.method == "GET":
        brand_list = request.GET.getlist("brand_filter")
@@ -204,8 +214,23 @@ def forBasicUser(request):
     }
     return render(request,'general/BasicUser.html',context)
 
+=======
+def lapTopDetails(request, laptop_id):
+    queryset = Laptop.objects.get(pk=laptop_id)
+    print(queryset.brand)
+    return render(request, 'laptops/details.html',{'queryset': queryset})
+>>>>>>> ERR/master
 @api_view(["GET"])
 def testing(request):
     snippets = Laptop.objects.all()
     serial = LaptopSerializer(snippets, many=True)
+<<<<<<< HEAD
     return render(request,'laptops/main.html',{'message':serial.data})
+=======
+    return Response({'message':serial.data})
+
+def example(request):
+    product = Product.objects.all()
+    print(product)
+    return render(request, 'general/main.html',{})
+>>>>>>> ERR/master

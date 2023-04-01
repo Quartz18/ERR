@@ -3,7 +3,11 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.urls import reverse
 from .models import Wishlist, ReviewLaptop
 from laptops.models import Laptop
+<<<<<<< HEAD
 from general.models import Product, Brand
+=======
+from general.models import Product
+>>>>>>> ERR/master
 from .forms import ReviewLaptopForm, UserSignUpForm
 from .decorators import unauthenticated_user, authenticated_user, authenticate_all_user
 from rest_framework.decorators import api_view
@@ -38,7 +42,11 @@ def register_user(request, *args, **kwargs):
             login(request,obj2)
             return HttpResponseRedirect(reverse('homePage'))
         else:
+<<<<<<< HEAD
             raise HttpResponse("Sorry, registration details were not correct, try again")
+=======
+            raise Http404
+>>>>>>> ERR/master
     return HttpResponseRedirect(reverse('homePage'))
 
 @authenticate_all_user
@@ -49,6 +57,7 @@ def logout_view(request, *args, **kwargs):
     logout(request)
     return HttpResponseRedirect(reverse('homePage'))
 
+<<<<<<< HEAD
 @authenticated_user
 def viewWishList(request):
     wish_items = Wishlist.objects.filter(user=request.user)
@@ -62,6 +71,15 @@ def viewWishList(request):
         'counter_wishlist': wish_items.count(),
     }
     return render(request,'account/userwishlist.html',context)
+=======
+def viewWishList(request):
+    wish_items = Wishlist.objects.filter(user=request.user)
+    context = {
+        'wishlist' : wish_items,
+        'user' : request.user
+    }
+    return render(request,'account/profile.html',context)
+>>>>>>> ERR/master
 
 @authenticated_user
 def addToWishListLaptop(request):
@@ -69,15 +87,27 @@ def addToWishListLaptop(request):
         laptop_id = int(request.POST.get("laptop_id"))
         try:
             item = Wishlist.objects.get(user=request.user,product__id=laptop_id)
+<<<<<<< HEAD
             return HttpResponse("Object cannot be added twice to wishlist!")
+=======
+            if(item.exist()):
+                return HttpResponse("Object cannot be added twice to wishlist!")
+            else:
+                return HttpResponseRedirect(reverse('laptop_details', kwargs={'laptop_id':laptop_id}))
+>>>>>>> ERR/master
         except Wishlist.DoesNotExist:
             category = Product.objects.get(name='Laptop')
             product = Laptop.objects.get(id = laptop_id)
             item = Wishlist.objects.create(user=request.user,category=category,product=product)
+<<<<<<< HEAD
             # , kwargs={'laptop_id':laptop_id}
             return HttpResponseRedirect(reverse('wishlistPage'))
 
 @authenticated_user
+=======
+            return HttpResponseRedirect(reverse('laptop_details', kwargs={'laptop_id':laptop_id}))
+
+>>>>>>> ERR/master
 def deleteFromWishListLaptop(request):
     if request.method == "POST":
         laptop_id = int(request.POST.get("laptop_id"))
@@ -87,15 +117,42 @@ def deleteFromWishListLaptop(request):
                 'deleted_from_wishlist' : str(item.product) +" was removed from WishList!"
             }
             item.delete()
+<<<<<<< HEAD
             return HttpResponseRedirect(reverse('wishlistPage'))
+=======
+            return render(request,'account/wishlist.html',context)
+>>>>>>> ERR/master
         except Wishlist.DoesNotExist:
             context = {
                 "deleted_from_wishlist" : "Item does not exit!"
             }
+<<<<<<< HEAD
             return HttpResponse("Sorry, there is no items in wishlist to be removed!")
     return HttpResponseRedirect(reverse('wishlistPage'))
 
 @authenticated_user
+=======
+            return render(request,'account/wishlist.html',context)
+    return HttpResponseRedirect(reverse('wishlistPage'))
+
+def viewReviewLaptop(request, laptop_id):
+    queryset = ReviewLaptop.objects.filter(product__id=laptop_id)
+    context = {
+        'laptop_id':laptop_id,
+        'reviewset':queryset,
+    }
+    try:
+        already_reviewed = ReviewLaptop.objects.get(user=request.user,product__id=laptop_id)
+    except ReviewLaptop.DoesNotExist:
+        reviewForm = ReviewLaptopForm()
+        context = {
+            'laptop_id':laptop_id,
+            'reviewset':queryset,
+            'reviewForm': reviewForm
+        }
+    return render(request, 'account/temp_review.html', context={})
+
+>>>>>>> ERR/master
 def addReviewLaptop(request,laptop_id):
     product = Laptop.objects.get(id = laptop_id)
     try:
@@ -103,7 +160,11 @@ def addReviewLaptop(request,laptop_id):
         return HttpResponseNotFound("Sorry! You have already given review for the same laptop!")
     except(ReviewLaptop.DoesNotExist):
         if(request.method == "POST"):
+<<<<<<< HEAD
             rate = float(request.POST.get("rate"))
+=======
+            rate = request.POST.get("rate")
+>>>>>>> ERR/master
             print(rate+1)
             comment =request.POST.get("comment")
             review = ReviewLaptop.objects.create(rate=rate,comment=comment,user=request.user,product=product)
@@ -112,8 +173,20 @@ def addReviewLaptop(request,laptop_id):
                 previous_ratings = laptop.ratings * laptop.count_ratings
                 laptop.count_ratings +=1
                 laptop.ratings = (previous_ratings +rate)/laptop.count_ratings
+<<<<<<< HEAD
                 laptop.save()
                 review.save()
             except Laptop.DoesNotExist:
                 return HttpResponseNotFound("Sorry! No such laptop found!")
     return HttpResponseRedirect(reverse('laptop_details',kwargs={'laptop_id':laptop_id}))
+=======
+            except Laptop.DoesNotExist:
+                return HttpResponseNotFound("Sorry! No such laptop found!")
+    return HttpResponseRedirect(reverse('viewReviewLaptop',kwargs={'laptop_id':laptop_id}))
+
+def example(request):
+    print(request.user)
+    if(request.user.is_authenticated):
+        return render(request,'general/index.html',{})
+    return HttpResponseRedirect(reverse('viewReviewLaptop',kwargs={'laptop_id':2}))
+>>>>>>> ERR/master
