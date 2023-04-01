@@ -10,5 +10,7 @@ router.register('brand',views.BrandList)
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     #path('', views.generalList, name="product"),
-    path('', include(router.urls)),
+    # path('', include(router.urls)),
+    path('',views.generalList, name="homePage"),
+    path('brands/<int:brand_id>',views.brandList, name="brandList"),
 ]

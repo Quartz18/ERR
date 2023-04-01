@@ -1,0 +1,107 @@
+{% extends "general/index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<!-- movielist07:38-->
+
+<head>
+    <!-- Basic need -->
+    <title>Recommendation System
+        <</title>
+            <meta charset="UTF-8">
+            <meta name="description" content="">
+            <meta name="keywords" content="">
+            <meta name="author" content="">
+            <link rel="profile" href="#">
+
+            <!--Google Font-->
+            <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+            <!-- Mobile specific meta -->
+            <meta name=viewport content="width=device-width, initial-scale=1">
+            <meta name="format-detection" content="telephone-no">
+
+            <!-- CSS files -->
+            <link rel="stylesheet" href="css/plugins.css">
+            <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    {% block content %}
+    <div class="hero common-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hero-ct">
+                        <h1> {{ titleOfPage }}</h1>
+                        <ul class="breadcumb">
+                            <li class="active"><a href="{% url 'homePage' %}">Home</a></li>
+                            <li> <span class="ion-ios-arrow-right"></span>{{ titleOfPage }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-single movie_list">
+        <div class="container">
+            <div class="row ipad-width2">
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="topbar-filter">
+                        <p>Found <span>{{ counter_laptops }} laptops </span> in total</p>
+                        <a href="{% url 'forBasicUser' %}" class="list"><i class="ion-ios-list-outline active"></i></a>
+                    </div>
+                    {% for laptop in queryset %}
+                    <div class="movie-item-style-2">
+                        <img src="{{ laptop.image.url }}" alt="">
+                        <div class="mv-item-infor">
+                            <h6>
+                                <a href="{% url 'laptop_details' laptop.id %}">{{ laptop.name }} Laptop</a>
+                            </h6>
+                            <p class="rate"><i class="ion-android-star"></i><span>{{ laptop.ratings }}</span> /5</p>
+                            <p class="describe">{{ laptop.name }} ({{laptop.cpubrand }} {{ laptop.cpumodel }}/ {{ laptop.ram }}GB/{% if laptop.check_ssd %} {{ laptop.ssd }}{% endif %}GB/ {{ laptop.os }}) price in India starts from ₹{{ laptop.price }}.
+                                </p>
+                            <p class="run-time">Price : ₹{{ laptop.price }} . <span> Type : {{ laptop.type }}</span> OS : {{ laptop.os }}. <span> </span></p>
+                            <p>
+                                <a href="#">Brand: {{ laptop.brand }} </a>
+                            </p>
+
+                        </div>
+                    </div>
+                    {% empty %}
+                    Sorry, there is nothing what you are looking for!
+                    {% endfor %}
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="sidebar">
+                        <div class="searh-form">
+                            <h4 class="sb-title">Helping Hand</h4>
+                            <p>
+                                A good Student's laptop should have these specifications:
+                                <br>Price must be affordable (i.e less than ₹70,000)
+                                <br><br>
+                                Memory Storage:
+                                <br>RAM: minimum 8GB
+                                <br>SSD: Ideally between 16GB to 512GB
+                                <br>Hard Disk: 240GB above
+                                <br>CPU Generation: 7th generation above
+                                <br><br>
+                                Laptop should be everyday use laptop
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <script src="js/jquery.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/plugins2.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+<!-- movielist07:38-->
+
+</html>

@@ -26,6 +26,7 @@ class Brand(models.Model):
     name = models.CharField(max_length=30)
     image = models.ImageField(upload_to="brand/images/%Y/%m/%d/")
     meta_data = models.FileField(upload_to="brand/files/%Y/%m/%d/")
+    type = models.CharField(max_length=20, default="Laptop")
     
-    def __Str__(self):
+    def __str__(self):
         return self.name

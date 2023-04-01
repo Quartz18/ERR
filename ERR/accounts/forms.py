@@ -39,4 +39,8 @@ class  UserSignUpForm(forms.Form):
         user_group = user.save()
         # group_main = Group.objects.get(name="client")
         # user_group.groups.add(group_main)
+<<<<<<< HEAD
         return user
+=======
+        return user
+>>>>>>> ERR/master

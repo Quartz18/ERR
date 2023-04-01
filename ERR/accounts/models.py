@@ -27,4 +27,8 @@ class Review(models.Model):
 class ReviewLaptop(Review):
     product = models.ForeignKey(Laptop,on_delete=models.CASCADE)
     def __str__(self) -> str:
+<<<<<<< HEAD
         return "Product: "+str(self.product)+", User: "+str(self.user)
+=======
+        return "Product: "+str(self.product)+", User: "+str(self.user)
+>>>>>>> ERR/master
