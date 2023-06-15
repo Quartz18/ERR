@@ -4,6 +4,7 @@ Electronics Recommendation and Review System is the application to get informati
 MySql database:
 
 <img width="339" alt="image" src="https://github.com/Quartz18/ERR/assets/43948594/4c50d7b1-d1ef-4b7d-a823-bdfc10971567">
+
 Sample of Laptop table:
 
 <img width="348" alt="image" src="https://github.com/Quartz18/ERR/assets/43948594/6928a55e-343d-40e4-90e7-baecf1f5a833">
